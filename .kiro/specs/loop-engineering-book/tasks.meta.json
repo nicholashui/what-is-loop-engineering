@@ -1,0 +1,466 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Set up the book skeleton and shared conventions": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340165
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685453058
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781686193594
+      }
+    ],
+    "2. Author the table of contents": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340168
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781686287858
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781686385111
+      }
+    ],
+    "3. Author Chapter 01 — Introduction & Learning Objectives": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340170
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781686387616
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781686916417
+      }
+    ],
+    "4. Author Chapter 02 — Audience & Prerequisites": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340173
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781686929845
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781687101395
+      }
+    ],
+    "5. Author Chapter 03 — What Is Loop Engineering": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340176
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781687161692
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781687660936
+      }
+    ],
+    "6. Author Chapter 04 — Lineage & the ReAct Connection": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340178
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781687664534
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781688258698
+      }
+    ],
+    "7. Author Chapter 05 — Origins & Historical Context": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340180
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781688288015
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781688769253
+      }
+    ],
+    "8. Author Chapter 06 — Anatomy of a Loop: The Components": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340182
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781688773670
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781689291352
+      }
+    ],
+    "9. Author Chapter 07 — The Loop Lifecycle": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340184
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781689295623
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781689806398
+      }
+    ],
+    "10.1 Write the minimal Ralph-style worked example": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340187
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781689810045
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781690023244
+      }
+    ],
+    "10.2 Write the production-grade worked example": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340190
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781690157521
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781690393815
+      }
+    ],
+    "10.3 Write the practical guidance and patterns section": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340193
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781690396417
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781690567876
+      }
+    ],
+    "11. Author Chapter 09 — Benefits & When to Use Loops": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340195
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781690573249
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781690796198
+      }
+    ],
+    "12. Author Chapter 10 — Risks, Limitations & Mitigations": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340197
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781690821592
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781691044484
+      }
+    ],
+    "13. Author Chapter 11 — Synthesis & Conclusion": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340199
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781691069178
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781691576533
+      }
+    ],
+    "14. Author the Glossary": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340203
+      },
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781691578992
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781691738686
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781691741468
+      }
+    ],
+    "15. Author the References & Author-Asserted Claims chapter": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340205
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781691744466
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781692013514
+      }
+    ],
+    "16. Add and wire navigation footers across all chapters": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340207
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781692016447
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781692210448
+      }
+    ],
+    "17.1 Verify learning-objective coverage (every objective maps to a present": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340210
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781692223447
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781692293552
+      }
+    ],
+    "17.2 Verify chapter framing and heading structure (single H1, intro,": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340212
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781692299490
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781692453598
+      }
+    ],
+    "17.3 Verify all eight Loop components are documented with purpose + at least": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340214
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781692456520
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781692710456
+      }
+    ],
+    "17.4 Verify navigation integrity (TOC links all chapters in order; prev/next": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340217
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781692754273
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781692859800
+      }
+    ],
+    "17.5 Verify terminology consistency with the glossary across all chapters.": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340219
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781692892497
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781693118264
+      }
+    ],
+    "17.6 Verify Author-Asserted Claim integrity (inline markers ↔ references": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340221
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781693137207
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781693311791
+      }
+    ],
+    "17.7 Verify worked-example formatting (language-hinted fenced blocks +": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340224
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781693314456
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781693471853
+      }
+    ],
+    "17.8 Editorial review for active-voice prose and acronym-at-first-use, and": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781685340226
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781693476358
+      },
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781693719548
+      }
+    ],
+    "10. Author Chapter 08 — Building a Loop: Practical Guide": [
+      {
+        "executionId": "9e718ca7-0b57-4097-a71d-299da5685f5e",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781690567879
+      }
+    ],
+    "17. Run the content-quality verification pass": [
+      {
+        "executionId": "232c8401-b8f2-4ce2-ae44-444089bbb92c",
+        "chatSessionId": "01a0103c-033c-4e4c-aa9d-24fae853621b",
+        "timestamp": 1781693719570
+      }
+    ]
+  }
+}
