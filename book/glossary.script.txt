@@ -1,0 +1,59 @@
+Before we wrap up, here are the key terms used throughout this book, and what each one means. Think of this as a spoken reference you can keep in mind as the ideas come together.
+
+Let's start with the central idea. A Loop is the orchestration system built by a loop engineer. It discovers or triggers work, spawns agents in isolation, verifies their output, persists state across runs, and then decides whether to continue, spawn a sub-agent, or stop.
+
+And Loop Engineering is the practice of designing a control system that prompts, observes, verifies, and iterates AI coding agents autonomously, rather than prompting them manually, turn by turn. It sits at the top of a lineage that runs from Prompt Engineering, through Context Engineering, and on through Agent Harness Engineering.
+
+That lineage is worth walking through in order. Prompt Engineering is the first stage. It's the practice of crafting the wording of a single instruction, the phrasing, the examples, the output format, the role framing, all to steer a model toward a good answer for one prompt and one response.
+
+Context Engineering is the second stage. It's the practice of deliberately assembling the information placed in the model's context window, the relevant files, retrieved documents, prior conversation, examples, and instructions, so the model reasons over the right material. In short, it adds the right information to the well-chosen words of Prompt Engineering.
+
+Agent Harness Engineering is the third stage. It's the practice of building a reliable execution environment, a Harness, for a single agent run. It adds action and feedback within one session, meaning tools, observed results, and multi-step control, on top of well-curated context.
+
+Which brings us to the Harness itself. A Harness is the reliable execution environment for a single agent run. It supplies the agent with tools, feeds tool results back into its context, manages the back-and-forth of a multi-step session, and keeps that run stable. The Loop's orchestration layer is built on top of the Harness.
+
+Now, the agents. An AI Coding Agent is a large-language-model-based system that can reason about a software task and take actions on it, running commands, reading and editing files, and checking results, rather than only producing text. Within a Loop, an AI coding agent usually plays the role of Generator Agent.
+
+The Generator Agent is the Loop component that produces the actual output, the code, the edits, or other artifacts, within a Loop. It's typically an AI coding agent, such as Claude Code or a Grok agent.
+
+A Sub-agent is a secondary agent that a Loop spawns to handle a focused portion of the work, for example, a specialized task branched off from the main run. Spawning a sub-agent is one of the three outcomes, alongside continue and stop, at the Loop's decision point.
+
+Next, how a Loop actually runs. An Iteration is one pass through the Loop, discovering or receiving work, running an agent, evaluating the output, persisting state, and deciding what to do next. A Loop drives a goal forward across many iterations, rather than in a single run.
+
+A Stopping Condition is a rule that terminates a Loop. Examples include tests passing, a Rubric score reaching a threshold, and a maximum number of iterations, or an exhausted budget.
+
+A Token Budget is a cap on the number of tokens, and therefore the cost, that a Loop may consume. Tight budgets, paired with stopping conditions, help mitigate the risk of uncontrolled token-cost growth.
+
+Now let's go through the components that make up a Loop. Automation, also called the Trigger, is the component that decides when and how work enters the Loop. Examples include a cron schedule, a webhook that fires on a new issue, and a slash-style command invoked on demand.
+
+The Evaluator, sometimes called the Critic or Verifier, is the component that independently checks the Generator Agent's output from outside the agent. It might be a test suite, a code-review or critic agent, or a Rubric scorer. It's what lets a Loop judge whether work is actually good, rather than trusting the agent's own assessment.
+
+A Rubric is an explicit set of scored evaluation criteria against which a Generator Agent's output is judged. An Evaluator can use a rubric to assign a score, and a rubric score threshold can serve as a stopping condition.
+
+State, or Memory, is the component that persists progress across iterations, so work isn't lost when any single run ends. Examples include a TODO file, a scratchpad, a project board, and files on disk.
+
+Worktrees, or Isolation, is the component that keeps each agent run isolated and reversible. Examples include git worktrees and separate branches, which let agent work proceed without disturbing the main line of development.
+
+Connectors are the component that integrates the Loop with external systems. Examples include source-control hosts, issue trackers, and chat platforms.
+
+Skills, or Knowledge, is the component that supplies reusable guidance and standards to agents. Examples include a skills file, an agents-guidance file, and coding standards.
+
+Now for some of the foundational patterns and precursors. ReAct, which stands for Reason plus Act, is the agent pattern that interleaves reasoning steps with actions. The agent thinks about what to do next, takes a concrete action through a tool, observes the result, reasons again, and continues until the task is done. It's the conceptual ancestor of the Loop, which lifts this reason-act cycle out of a single agent conversation and into an external, controllable system.
+
+The Ralph Loop, also known as the Ralph Wiggum technique, is the precursor technique that Loop Engineering evolves from. It's a simple shell loop that repeatedly feeds an agent fresh context, plus the previous run's output and errors, and re-runs it until the task is done. It demonstrates the core idea of running an agent in a loop with results fed back in, but without isolation, without an independent evaluator, and without persisted state.
+
+Manual, or turn-by-turn prompting, is the conventional way of working with an AI coding agent, in which a human issues one instruction, reads the result, and issues the next instruction, supervising every step. Loop Engineering replaces this hands-on supervision with a system that prompts and iterates the agent on its own.
+
+A couple of terms about quality and risk. Slop is high-volume, low-quality output produced when agents run without strong verification. It's a primary risk of Loops, mitigated by tests and critic agents that gate what the Loop accepts.
+
+Finally, some terms about the book itself and how it's put together. The Book is the complete educational deliverable, composed of ordered Markdown chapter files, plus supporting files, the table of contents, this glossary, and the references.
+
+A Chapter is a single top-level Markdown file covering one major topic area of the Book.
+
+The Reader is the target learner, a software engineer or technical practitioner who is familiar with AI coding agents at a user level, but new to orchestrating them autonomously.
+
+A Worked Example is a concrete, end-to-end illustration, whether code, configuration, or an annotated walkthrough, that demonstrates a concept in practice. The book presents a minimal Ralph-style example and a production-grade example.
+
+And an Author-Asserted Claim is a factual statement, a dated event, a named attribution, or a direct quote, drawn from supplied source material, that the book presents transparently as requiring independent verification by the Reader, because it couldn't be checked against live sources in the authoring environment. Such claims carry an inline marker and are collected in the References file.
+
+And that's the full set of key terms. Keep them close as you move through the ideas, and each part of the book will fit together a little more clearly.

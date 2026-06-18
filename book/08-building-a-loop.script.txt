@@ -1,0 +1,125 @@
+In this chapter, we move from understanding a loop to actually building one. We'll start from the simplest thing that could possibly work, a bare bones loop in the spirit of the Ralph Loop, and then we'll grow it into a production-grade system, one that has proper isolation, an independent evaluator, state that persists, and clear conditions for when to stop. By the end, we'll distill the common patterns for designing a loop's goals, its evaluation criteria, and its guardrails. The aim is that you'll be able to construct a working loop yourself, and reason clearly about how to make it sturdy.
+
+Let's go from concept to construction. The earlier chapters gave you the parts and showed those parts in motion. This chapter puts a screwdriver in your hand. The fastest way to truly understand a loop is to build the smallest one that runs, see exactly where it's fragile, and then add structure to fix each weakness in turn.
+
+So we begin deliberately small. The first example is the minimal loop. It's just a handful of lines that capture the essential idea, call an agent, feed it the result, and call it again. Nothing more. It's intentionally missing every production concern. Seeing it stripped bare makes those missing concerns obvious, and that's exactly what sets up the more serious version that follows.
+
+Let's start with that minimal loop, the Ralph-style example. The Ralph Loop is the spiritual ancestor of every loop in this book. It's a simple shell loop that repeatedly hands an agent fresh context, plus whatever the last run produced, and keeps going until the work is done.
+
+In plain terms, here's what that little script does. It holds a standing instruction, something like, implement the tasks in our to-do list and make the test suite pass. It keeps a running piece of context that carries forward whatever happened on the previous attempt. Then it enters a loop that keeps repeating until a special signal appears. In this crude version, the agent itself is expected to write out the literal words "all done" when it believes the job is finished, and the loop simply watches for that phrase.
+
+On each pass through the loop, three things happen. First, the loop calls the coding agent, handing it the standing instruction together with the output and errors from the previous attempt, and it captures everything the agent prints, its summary of changes, the output of any commands it ran, and any errors. Second, it takes all of that captured output and folds it into the context for the next round, so the next time the agent runs, it can see what it just did and what went wrong. And then the loop comes around again. When the signal finally appears, the loop announces that it's finished.
+
+Three lines really do all the work here, and each one maps to an idea from the earlier chapters. The loop condition, the test that watches for that "all done" phrase, is the loop's stopping condition in its crudest possible form. The cycle repeats until that sentinel string shows up in the agent's output. It's the same continue-or-stop decision from the lifecycle chapter, reduced to a single match on a string. The agent invocation is the generator agent doing the hands-on work, reading the task, editing files, running commands, and printing the result. And the context recycling, where the previous output gets pulled into the next prompt, is the feedback path that makes a loop actually a loop. The previous attempt's output and errors are folded into the next attempt's context, so each try builds on the last instead of starting blind.
+
+Now, this example is useful precisely because of what it leaves out. By design, it has no isolation. The agent edits files directly in the working directory. There's no separate workspace and no separate branch, so a single bad iteration can corrupt your work with nothing to roll back to.
+
+It also has no independent evaluator. "Done" is simply whatever the agent says it is. Watching for that "all done" phrase means trusting the agent's own claim. Nothing external runs the tests or reviews the changes, so the loop genuinely cannot tell good work from confident nonsense.
+
+And it has no persisted state. The only memory is a single scratch file that gets overwritten every iteration. There's no durable record of progress, no task list that survives a crash, and no way to resume where it left off.
+
+On top of all that, it has no real budget guardrail. If the agent never prints the magic phrase, the loop runs forever. Now, these aren't bugs to patch in place. They're the exact gaps that the production-grade loop is built to close. So hold this minimal version in your mind as the baseline we're about to harden.
+
+Let's evolve it into a production-grade loop, one you could actually trust to run unattended. The structure stays the same, call the generator agent, fold the result into the next attempt, but every gap from the minimal version now gets filled by an explicit piece of machinery. Each addition maps directly to one of the eight components from the anatomy chapter, and to a stage of the seven-stage lifecycle.
+
+It helps to keep both of those reference frames in view. There are four production concerns we're adding. First, running each attempt in a throwaway, disposable workspace and branch, that's the isolation component, and it corresponds to the lifecycle stage where we spawn agents in an isolated workspace. Second, gating acceptance on an independent check, that's the evaluator, and it lines up with the stage where the evaluator checks the output. Third, recording progress in a durable file, that's state and memory, matching the stage where we persist state. And fourth, terminating on success, on a threshold, or on a budget cap, that's the stopping condition, which corresponds to the final stage where we decide whether to continue, spawn, or stop.
+
+The generator agent is still the worker at the center. The trigger that launches the script is the automation component. And the recycled feedback, where the evaluator's findings flow into the next prompt, is the lifecycle stage where we feed feedback back and repeat. What changes is that none of these things are left implicit anymore.
+
+The first step is to externalize the configuration. We pull the loop's knobs out of the script and into a separate config file. This is where the stopping conditions live as data, rather than being buried in logic, which makes budgets auditable and easy to tune.
+
+That config file spells out everything in plain declarations. It states the goal, something like, implement the next unchecked task on the to-do list and make the suite green. It names the generator agent we invoke and the model it uses. It describes the evaluator, and here's the crucial part, the evaluator is independent of the generator. It does not trust the agent's self-report. Instead it runs real commands and scores the result. So the config names an objective test command that must succeed, an optional critic command for a second opinion, and a rubric threshold, a minimum score the work must clear to be accepted.
+
+The config also lays out the stopping conditions, a hard cap on the number of iterations, a budget guardrail in dollars that stops the loop if spending goes too high, and a success condition that accepts the work when the test suite is green and the rubric is satisfied. It describes the isolation setup, the base branch and where the disposable workspaces should live. And it names the file that holds persisted progress between iterations. Every field here is a production concern made explicit. The stopping conditions alone close the "runs forever" gap from the minimal version, because the loop now has a success exit, a rubric exit, and two independent budget caps.
+
+The second step is the orchestrator script that reads that config and runs the hardened loop. Think of it as a guided tour, where each labeled section is one of the four additions.
+
+The script begins by loading all those settings from the config, the goal, the test command, the critic command, the threshold, the iteration cap, the cost cap, the base branch, and the state file. It sets up counters for the current iteration and the running spend, and an empty piece of context to carry feedback forward.
+
+Then comes the stopping condition, which sits right at the top of the loop. Instead of blindly watching for a sentinel, the loop header encodes the budget guardrails as real, data-driven tests. The loop keeps going only while we're under the iteration cap and under the cost cap. The moment either limit is reached, it stops.
+
+Inside each pass, the first thing that happens is isolation. Each attempt runs in its own disposable workspace, on its own throwaway branch named after the attempt number, branched off the base. Because of this, a bad iteration can never corrupt the main line of work or a sibling attempt. If an attempt fails, we just delete its workspace. This is exactly the reversibility the minimal loop was missing.
+
+Next, the generator agent acts. The script hands the agent the standing goal, the persisted state file, and the recycled feedback from the previous evaluation. The agent then does its work, editing files and running commands inside that isolated workspace.
+
+After the agent finishes, the evaluator takes over, and this is independent verification. The agent's own opinion does not count here. There are two gates. The first gate is objective, the real test suite must pass. The second gate is qualitative, a critic scores the work against a written rubric and produces a number, say somewhere between zero and one. The script also adds up the cost of the attempt so the budget guardrail stays accurate.
+
+Then comes the decision point. If the tests pass and the critic's score meets or exceeds the threshold, both gates are satisfied, so this attempt is promoted, merged back into the base branch, and the loop stops. That's the success exit.
+
+If the attempt doesn't clear both gates, the script persists what was learned. It records the test result and the critic score, appending them to the durable progress file so the next iteration can resume instead of starting blind, and so progress survives a crash. That same feedback is also recycled into the next prompt. Finally, the rejected attempt's workspace is discarded, though the branch can be kept around for forensics, in case you want to inspect what went wrong later.
+
+And if the loop ever falls out without hitting that success exit, it means a stopping condition halted it, either the iteration cap or the budget. That's a controlled stop, not a runaway. The script reports how many iterations ran and the total spend.
+
+So let's walk the four concerns back against the minimal baseline and see exactly how each gap was closed. On isolation, the minimal loop edited the working directory in place. Now every iteration gets a fresh, disposable workspace on a throwaway branch. A failed attempt is simply removed, and only an accepted attempt is ever merged back. Nothing the agent does can corrupt the main line or a sibling attempt.
+
+On the independent evaluator, "done" is no longer the agent's say-so. An objective gate, the tests must pass, and a critic gate, the score must clear the threshold, must both succeed before the work is accepted. This is the primary defense against output that's confident but wrong.
+
+On persisted state, progress is appended to a durable file after each iteration, and that file is fed back into the next prompt. The loop can resume after a crash, and each attempt builds on a recorded history rather than a single overwritten scratch file.
+
+And on stopping conditions, termination is now explicit and multi-pronged. The loop can stop on success when both gates are green, on exhausting the maximum iterations, or on exceeding the cost cap. The runaway-forever failure mode of the minimal loop is structurally impossible here.
+
+Notice what did not change. The heartbeat is still generate, evaluate, feed back, repeat. The production loop isn't a different idea from the Ralph-style script. It's the same idea, with each implicit assumption replaced by an explicit, inspectable component. And that's the whole move of loop engineering. You take the parts from the anatomy chapter, arrange them along the lifecycle, and make every control surface something you can see, tune, and trust.
+
+Now let's talk about building a loop from its components, a practical path. The two examples we just walked through show the destination. This part is the route. You don't sit down and write the production loop in one pass. You grow it, one component at a time, in an order that keeps you in control at every step. The guiding principle is simple. Start with the smallest loop that runs against your real task, then add each component only when the absence of it actually hurts.
+
+Here's a reliable order for assembling a loop from the eight components. Start with the generator agent and a stopping condition. This is the minimal loop, a loop, one agent call, and a crude stop test. Run it against a real task right away. You're not trying to be correct yet, you're trying to see the heartbeat work end to end on your own machine.
+
+Add isolation next, before you trust the loop with anything real. The moment the agent edits files unattended, a bad iteration can corrupt your workspace. Wrap each attempt in a disposable workspace on a throwaway branch, so every iteration is reversible. This is the cheapest insurance in the whole system, so add it early.
+
+Then add the evaluator. This is the single highest-leverage component, because it's what separates a loop from a random output generator. Begin with the strongest objective signal you already have, usually your existing test suite, and only later layer in a critic or rubric gate.
+
+After that, add persisted state. Once iterations are isolated and gated, give the loop a durable memory, a task file, a scratchpad, or a project board, so progress survives a crash and each attempt builds on a recorded history rather than starting blind.
+
+Next, tighten the stopping conditions into explicit guardrails. Replace the crude sentinel with data-driven caps, a success exit, an iteration cap, and a budget cap.
+
+And finally, add the remaining components only when your task demands them. The automation or trigger, things like a scheduled job, a webhook, or a slash command, the connectors to your issue tracker, chat, or source-control host, and the skills and knowledge, like a skills file or your coding standards, these are what turn a loop you run by hand into one that runs itself. They're essential for an unattended loop, but they add nothing to correctness, so defer them until the generate-and-evaluate core is trustworthy.
+
+The discipline here is subtractive, not additive. Every component you add is a control surface you now have to understand and maintain, so the right question at each step is, does omitting this cause a concrete failure on my task? If a loop that runs locally on a green test suite already does the job, you don't need a webhook trigger or a chat connector. Grow toward the production example only as far as your task actually pushes you.
+
+Now let's get into the patterns for goals, evaluation criteria, and guardrails. Three design decisions determine a loop's success more than any other, the goal you give it, the evaluation criteria that decide when its work is acceptable, and the guardrails that bound its behavior. The components are just plumbing. These three are where engineering judgment lives. Let's go through the patterns worth reaching for first.
+
+Start with designing the goal. A loop runs unattended, so its goal must be clear and checkable, phrased so that something other than the agent's own optimism can tell whether it's been met.
+
+The first pattern is to make the goal externally verifiable. Prefer a goal whose completion a machine can confirm. Something like, make the test suite exit cleanly with no skipped tests, is checkable. Something like, improve the code, is not. A goal the evaluator cannot check is a goal the loop cannot finish.
+
+The second pattern is to bound the scope to one coherent unit of work. A loop steered at, refactor the payments module so all existing tests still pass, will converge. One aimed at, modernize the codebase, will wander. Narrow goals give the feedback path something concrete to push against each iteration.
+
+The third pattern is to state the goal as an outcome, not a procedure. Describe the end state you want, the suite is green and the new endpoint succeeds, not the steps to get there. The agent chooses the steps, the loop verifies the outcome.
+
+A goal written this way drops straight into the goal field of the configuration. For example, a good goal might be, add pagination to the orders endpoint so it accepts page and limit parameters, returns at most the requested number of items, and keeps the existing tests green. That's checkable, because the existing and new tests are the objective signal of done. And it's bounded, because it's one endpoint and one behavior, not "improve the orders API."
+
+Next, designing the evaluation criteria. The evaluator is the loop's defense against output that's confident but wrong. A trustworthy evaluator shares one defining trait. It is independent of the generator agent. It never accepts the agent's self-report as proof of success. Good evaluation usually layers two kinds of check.
+
+The first is an objective gate that's hard to fake. Tests, type checks, linters, a build step, or schema validation, anything that returns an unambiguous pass or fail that the agent cannot talk its way past. This is the backbone of trustworthy evaluation, so start here.
+
+The second is a critic or rubric gate, for what objective checks miss. A test suite confirms behavior, but it says little about readability, security, or whether the change actually matches the intent. A second agent scoring the work against a written rubric covers that gap. Keep the rubric explicit and version it, so the standard the loop is held to is visible and adjustable.
+
+The two gates compose into a single acceptance rule. Accept only when the objective gate passes and the rubric clears its threshold. In plain terms, the rule works like this. First it checks the objective gate, if the real test suite didn't pass, the answer is no, reject. Then it checks the qualitative gate, if the critic's score is below the threshold, the answer is again no. Only when both gates are satisfied does it return yes, promote this attempt and stop. It's an independent, two-gate check that the agent simply cannot self-certify.
+
+Two more patterns make an evaluator trustworthy in practice. Run the objective gate in the very same isolated workspace the agent worked in, so you're scoring exactly what it produced. And set the rubric threshold deliberately. Too low, and slop slips through. Too high, and the loop burns its whole budget chasing a score it can never reach. A threshold you can defend, and adjust as you learn, beats an arbitrary one.
+
+Finally, designing the guardrails. Guardrails are the stopping conditions, plus the isolation and escalation rules that keep an unattended loop from doing damage. Where evaluation decides whether the work is good, guardrails decide how far the loop is allowed to go before something stops it. Reach for these patterns.
+
+Always set more than one budget. Cap iterations and cap spend. Either one alone has a blind spot. A cheap but stuck loop can spin through its iteration count, while an expensive single attempt can blow the dollar budget in one shot. Together, they box in both runaway modes.
+
+Isolate every attempt, and merge only on success. Reversibility is itself a guardrail. If a rejected attempt lives in a throwaway workspace, a bad iteration costs you nothing more than deleting that workspace, not a corrupted main branch.
+
+And define an explicit path for escalating to a human. A loop should know when to stop and ask. When it exhausts its budget without acceptance, when it oscillates without improving, or when it trips a high-risk tripwire, it must hand off to a person rather than fail silently or keep burning tokens.
+
+These rules live in the configuration alongside an escalation hook. The stopping conditions set the iteration cap, which catches a stuck-but-cheap loop spinning in place, the cost cap, which catches an expensive loop independently of iteration count, and the success exit, where both the objective and rubric gates clear. The escalation settings say what to do when a budget is hit without acceptance, don't fail silently, hand off, perhaps by opening an issue or posting to chat. And if the same failure repeats a set number of times in a row, escalate.
+
+Notice that every pattern here ties back to a component from the anatomy chapter and a stage of the lifecycle. Goals shape the work that's discovered in the first stage. Evaluation criteria are the evaluator's check in the fourth stage. And guardrails are the continue, spawn, or stop decision in the final stage. Designing a loop well is, in the end, designing these three things well. The components simply give each decision a place to live.
+
+So let's pull together the key ideas from this chapter. The fastest way to understand a loop is to build the smallest one that runs, watch where it breaks, and add structure to fix each weakness.
+
+A minimal, Ralph-style loop is just a simple loop that calls a generator agent, captures its output and errors, and recycles them into the next iteration's context, until a sentinel stopping condition is met.
+
+That minimal loop deliberately has no isolation, no independent evaluator, and no persisted state, and those very gaps are the motivation for the production-grade loop that follows.
+
+The production-grade loop keeps the same generate, evaluate, feed-back heartbeat, but it fills each gap with an explicit component. A disposable workspace per attempt for isolation. An independent evaluator that gates on the tests and on a rubric score. A persisted progress file that survives crashes and informs the next attempt. And explicit stopping conditions, success, a maximum number of iterations, and a budget cap, that make runaway loops impossible.
+
+Each production addition maps one-to-one onto a component from the anatomy chapter and a stage of the lifecycle. Building a loop is mostly a matter of making those parts explicit and inspectable.
+
+Build a loop subtractively, one component at a time. Start with a generator agent plus a stopping condition. Add isolation before trusting it. Then add an evaluator, then persisted state, then explicit budget guardrails. And add the automation, the connectors, and the skills and knowledge only when the task actually demands them.
+
+And remember, a loop's success hinges on three design decisions more than any component choice. A goal that's clear, checkable, and outcome-phrased. Evaluation criteria built on an independent objective gate, your tests, plus a critic or rubric gate. And guardrails, layered iteration and budget caps, per-attempt isolation, and an explicit path for escalating to a human, so that an unattended loop always knows when to stop and ask.

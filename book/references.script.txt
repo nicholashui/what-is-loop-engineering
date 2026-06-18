@@ -1,0 +1,17 @@
+Before we close, a quick note on sources.
+
+This book was written without live access to the internet or any web-search tools. That constraint doesn't change the ideas themselves. The definition of Loop Engineering, the anatomy of a loop, the lifecycle, the worked examples, the risks and how to handle them, all of that is explained from solid background knowledge and the material at hand. So you can trust the concepts. What you should double-check are the attributions. Any time the book names a specific person as the source of an idea or a quote, points to a particular date, or repeats someone's exact words, that detail could not be verified against its original source while the book was being written.
+
+So rather than quietly drop those facts or present them as settled history, the book treats each of them as a claim made by the author, something you should confirm for yourself. Think of them as pointers to sources worth checking, not as established fact. And if your own look at an original source disagrees with what you hear here, trust the source.
+
+There are four of these claims. Here they are.
+
+First, the term "Loop Engineering" itself. Its popularization is credited to a post by Addy Osmani, published on June seventh, twenty twenty-six. The idea is that the post gave a name to a practice that was already taking shape, rather than inventing it from scratch.
+
+Second, a supporting perspective from Peter Steinberger. He frames the shift as moving away from prompting agents and toward designing the loops that prompt them. As he puts it, you shouldn't be prompting coding agents anymore; you should be designing loops that prompt your agents.
+
+Third, a similar view from Boris Cherny, who leads Claude Code at Anthropic. He describes the same shift from inside his own day-to-day work. In his words, he doesn't prompt Claude anymore. Instead, he has loops running that prompt Claude and figure out what to do, and his job is to write those loops.
+
+And fourth, the technique that came before all this, the Ralph Loop, sometimes called the Ralph Wiggum technique. It's attributed to Geoffrey Huntley in twenty twenty-five. It's described as a simple loop that repeatedly feeds an agent fresh context, along with the previous run's output and errors, until the task is finally done.
+
+So those are the four. The names, the dates, and the quotes are recorded as faithfully as possible, but please take a moment to verify them for yourself before you rely on them.

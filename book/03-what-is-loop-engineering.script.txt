@@ -1,0 +1,49 @@
+In this chapter, you'll learn a precise definition of Loop Engineering and of the Loop it produces. You'll see exactly how that practice differs from prompting an AI coding agent manually, one turn at a time, and you'll build a durable intuition for what a Loop is and why it earns its name. This is the chapter that delivers the book's first and most foundational learning objective: being able to explain what a Loop is and how it differs from manual prompting.
+
+Let's start with a precise definition. Loop Engineering is the practice of designing a control system that prompts, observes, verifies, and iterates AI coding agents autonomously, rather than prompting them manually, turn by turn.
+
+That single sentence carries a lot of weight, so it's worth unpacking each part.
+
+First, a control system. The thing you build is a system, not a single clever prompt. It's a small amount of software and configuration whose job is to keep an agent productively at work toward a goal.
+
+Next, it prompts, observes, verifies, and iterates. These four verbs are the cycle. The system issues instructions to an agent, that's the prompting. It watches what the agent produces, that's observing. It checks whether that output is actually good, that's verifying. And it uses the result to drive the next attempt, that's iterating.
+
+Then there are the AI coding agents. The system orchestrates one or more AI coding agents, the same kind of assistant you already prompt by hand today.
+
+And finally, autonomously. Once you've designed it, the system runs the cycle on its own, without a human composing each instruction.
+
+The artifact this practice produces has its own name. A Loop is the orchestration system built by a loop engineer. It discovers work, spawns agents, verifies their output, persists state, and decides whether to continue or stop. Throughout this book, Loop Engineering names the discipline, the way of thinking and designing, and Loop names the thing you build. Keep the two straight and the rest of the book stays clear: you do Loop Engineering, and you end up with a Loop.
+
+Here's one clarification that prevents a common confusion. The Loop is not the agent. The AI coding agent, what this book calls a Generator Agent, the component that actually produces code and edits, is just one part of the Loop. The Loop is the surrounding machinery that decides what the agent should do, runs it, judges the result, and repeats. When this book says the Loop decides, or the Loop verifies, it means that surrounding machinery, not the agent inside it.
+
+Now let's look at the contrast between manual prompting and a Loop. The fastest way to understand Loop Engineering is to set it directly against the thing it replaces.
+
+Consider how manual, turn-by-turn prompting works. When you prompt an AI coding agent by hand, you are the control system. Think about what you actually do across a session. You hold the goal in your head, you know what done looks like. You type a prompt describing the next step. You read the agent's output and decide whether it's any good. If it's wrong, you compose a correction and prompt again. You remember what has already been tried so you don't go in circles. And you decide when the work is finished, or when it's time to give up.
+
+Every one of those steps runs on your attention. The agent generates; you supply all the judgment. This is powerful for short, exploratory work, but it has a hard ceiling: progress stops the moment you step away. You are, in the most literal sense, babysitting the agent, present for every turn, because every turn needs a decision only you are making.
+
+Now consider how a Loop works. Loop Engineering takes that list of things you do in your head and makes each one explicit and encoded, so a system can do them instead. The judgments don't disappear; they move out of your attention and into the design of the Loop.
+
+So where you used to hold the goal in your head, the Loop has a written goal and evaluation criteria. Where you used to type each next prompt, the Loop has an automated trigger and prompting step. Where you used to judge whether output is good, the Loop has an Evaluator, which might be tests, a critic agent, or a rubric. Where you used to remember what's been tried, the Loop has persisted state and memory on disk. And where you used to decide when to stop, the Loop has an explicit stopping condition.
+
+This is the heart of the matter, and it's worth stating as plainly as possible: you stop being the babysitter, and you build the loop that prompts, observes, verifies, and iterates. Your role shifts from operator, the person typing the next instruction, to system architect, the person who designs the system that types the instructions. You spend your judgment once, up front, in the design, rather than continuously, turn after turn.
+
+The difference is not that a Loop is smarter than you prompting carefully. The difference is who runs the cycle. A Loop runs it without you, which means it can run while you sleep, run across hundreds of iterations, and run on the long, grinding, iterative tasks that are too tedious to babysit by hand.
+
+Let's build the intuition. Why call it a Loop? The name isn't a metaphor; it's a description of the mechanism. The system loops, it repeats a cycle, and that repetition is exactly what makes it valuable.
+
+Picture the cycle as a circle that turns again and again. Each time around, the Loop prompts the agent, so the agent acts. Then it observes, reading the output. Then it verifies, asking whether the result is good. And then it makes a decision. If the work is not yet good enough, it feeds the result back in, including any errors or failed checks, and goes around again. If the work meets the goal, or if it hits a limit, it stops.
+
+This is precisely the loop you run in your own head during a manual session. You prompt, you read, you judge, you correct, and you repeat until you're satisfied. Loop Engineering simply lifts that cycle out of your head and turns it into a system that can run it on its own. Once you see the cycle clearly, the whole discipline follows. Everything in the chapters ahead is about designing each part of this circle well: how work enters it, how the agent runs safely inside it, how the verification step decides what counts as good enough, how progress is remembered between turns, and how the Loop knows when to stop.
+
+Hold onto this image. A Loop is a circle that turns on its own, and Loop Engineering is the craft of designing a circle worth letting turn.
+
+Let's recap the key takeaways. Loop Engineering is the practice of designing a control system that prompts, observes, verifies, and iterates AI coding agents autonomously, instead of prompting them manually one turn at a time.
+
+A Loop is what that practice produces: the orchestration system that discovers work, spawns agents, verifies output, persists state, and decides whether to continue or stop. The Loop is not the agent. The Generator Agent is just one component inside it.
+
+The defining contrast with manual prompting is who runs the cycle. In manual prompting, you are the control system, supplying all the judgment turn by turn. In a Loop, those judgments become explicit, encoded parts: a goal, an Evaluator, persisted state, and a stopping condition, so the system runs the cycle without you.
+
+Put plainly: you stop being the babysitter and build the loop that prompts, observes, verifies, and iterates. Your role shifts from operator to system architect.
+
+And the name is literal. A Loop loops, repeating a prompt, observe, verify, and iterate cycle until the work meets its goal or hits a limit. That repeating circle is the mental model to carry through the rest of the book.

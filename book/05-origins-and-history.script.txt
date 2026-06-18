@@ -1,0 +1,45 @@
+In this chapter, we're going to trace where the term Loop Engineering actually came from, and who shaped it. We'll look at the June 2026 post that's credited with popularizing the name, the practitioner voices that captured the shift in mindset, and the minimal technique that came first and pointed the way forward, something called the Ralph Loop. And because these are recent, attributed claims, I'll also explain how careful we should be about them, so you can verify the details for yourself.
+
+Let me start with a quick note about sources, because it matters here. This chapter is about people, dates, and quotes. That's exactly the kind of recent history that's easy to get slightly wrong and hard to check after the fact. So treat the ideas in this chapter as solid, but treat the specific attributions, the names and the dates, as pointers that are worth confirming against the original sources yourself.
+
+With that understood, let's trace how a clever shell trick became a named discipline.
+
+Ideas often exist in practice long before they have a name. The practice of running coding agents in a loop was already spreading among early adopters when the label Loop Engineering crystallized and went mainstream.
+
+The popularization of the term is attributed to a post by Addy Osmani, published on June 7th, 2026, and it's worth verifying that for yourself. The significance of that post wasn't that it invented something new. It was that it named something that was already happening. It gave a crisp label to the emerging practice of designing systems that prompt and orchestrate AI coding agents, rather than prompting those agents by hand, turn by turn. A name matters. Once the practice had one, scattered experiments could be recognized as instances of a single, nameable discipline. And a discipline with a name is something people can study, compare notes on, and deliberately improve.
+
+That naming moment is the anchor date for this short history. But what really gave it traction were the practitioners who had already felt the shift in their own daily work, and could describe it vividly.
+
+The clearest evidence that Loop Engineering was a genuine change, and not just a rebranding, came from engineers describing how their own relationship to coding agents had changed. Two perspectives capture that shift especially well.
+
+The first comes from Peter Steinberger, who framed the change as a move away from prompting and toward building the thing that prompts. As Peter Steinberger put it, you shouldn't be prompting coding agents anymore. You should be designing loops that prompt your agents.
+
+The value of that framing is its bluntness. It doesn't describe Loop Engineering as an optional upgrade to manual prompting. It describes manual prompting as the thing you're meant to stop doing. The unit of work you design is no longer the message. It's the loop that produces the messages. That's the entire thesis of this book, compressed into two sentences.
+
+The second perspective comes from Boris Cherny, who leads Claude Code at Anthropic, and he described the same shift from inside his own workflow. As Boris Cherny said, I don't prompt Claude anymore. I have loops running that prompt Claude and figure out what to do. My job is to write loops.
+
+What makes this striking is who's offering it. Here's someone working at the very center of modern coding-agent tooling, describing his job not as using the agent, but as writing the loops that use it. That phrase, my job is to write loops, is a concise statement of the role change this book keeps returning to. The practitioner moves from operator to system designer. You're no longer the one in the chair issuing each instruction. You're the one who built the system that issues them.
+
+Taken together, these two voices describe the same transition from two angles. Steinberger gives us a prescription, design loops, don't prompt. Cherny gives us a description of lived practice, I write loops now. And both of them point back to a technique that demonstrated the idea in its rawest form, a technique that actually predates the name itself.
+
+Before the term existed, the technique did. The most direct ancestor of Loop Engineering is the Ralph Loop, also called the Ralph Wiggum technique, attributed to Geoffrey Huntley in 2025.
+
+The Ralph Loop is disarmingly simple. In its original form, it's little more than a basic shell loop. It repeatedly feeds an AI coding agent fresh context, plus the previous run's output and any errors, and then runs the agent again and again until the task is done. There's no orchestration framework, no elaborate machinery. Just the core insight that if you keep restarting an agent with whatever it produced last time, it can grind its way toward a goal across many iterations, instead of giving up at the end of a single run. The playful Ralph Wiggum name fits the spirit of the trick. It's almost naively straightforward, and yet it works.
+
+In plain terms, the loop does this. As long as the task isn't finished, it runs the agent, handing it the prompt along with the previous output and the previous errors as fresh context. It captures whatever the agent produces, saves the output and any errors, and then loops around to run the agent again. It keeps doing that until the task is finally done.
+
+That tiny loop is the seed of everything in this book. It established the foundational move, run an agent in a loop, feeding results back in, in the most minimal way imaginable, with nothing else attached.
+
+So how do we get from there to Loop Engineering? Loop Engineering is what you get when you take that seed seriously and grow it into something production-grade. The Ralph Loop is the proof of concept. Loop Engineering is the engineering discipline built on top of it. And the evolution adds the parts the bare loop deliberately leaves out.
+
+First, isolation, so that each run is safe and reversible, rather than scribbling over a shared workspace. Second, an independent evaluator, so that done is judged by something other than the agent itself, rather than simply assumed. Third, persisted state, so that progress is real and durable, instead of being whatever happens to survive in a context window. And fourth, explicit stopping conditions, so the loop knows when to quit, whether that's on passing tests, a quality threshold, or a budget cap, instead of spinning indefinitely.
+
+In other words, the Ralph Loop supplies the intuition, keep re-running the agent with feedback. And Loop Engineering supplies the structure, do it safely, verifiably, durably, and with a defined exit. The rest of this book is, in large part, the story of adding that structure, component by component, in the chapters that follow.
+
+This is why the historical thread matters. The technique came first and proved the idea would work. The practitioner voices articulated the mindset shift. And the naming moment gave the whole practice an identity. Together, they explain not just what Loop Engineering is, but how it arrived.
+
+So let's recap the key points. The popularization of the term Loop Engineering is attributed to Addy Osmani's post of June 7th, 2026. Its importance was in naming an already-emerging practice, so it could be studied and improved as a discipline. Two practitioner perspectives capture the mindset shift. Peter Steinberger urged designing loops that prompt your agents, rather than prompting agents directly. And Boris Cherny, who leads Claude Code at Anthropic, described his own job as writing the loops that prompt the agent. Both of them framing the move from operator to system designer.
+
+The direct precursor is the Ralph Loop, the Ralph Wiggum technique, attributed to Geoffrey Huntley in 2025. It's a simple loop that re-runs an agent with fresh context, plus prior output and errors, until the task is done. And Loop Engineering evolves that Ralph Loop into a production-grade discipline, by adding isolation, an independent evaluator, persisted state, and explicit stopping conditions. The bare loop is the proof of concept. The engineering is the structure built around it.
+
+And one last reminder. Every dated event, every named attribution, and every direct quote in this chapter is a recent claim drawn from the source material, so it's well worth verifying these for yourself against the original sources.
