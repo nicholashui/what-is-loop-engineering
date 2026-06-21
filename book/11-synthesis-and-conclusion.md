@@ -185,4 +185,4 @@ just prompt the agent. Engineer the loop that prompts it for you.
   the agent for you.
 
 ---
-[< Previous: Risks, Limitations & Mitigations](10-risks-and-mitigations.md) | [Table of Contents](README.md) | [Next: Glossary >](glossary.md)
+[< Previous: Risks, Limitations & Mitigations](10-risks-and-mitigations.md) | [Table of Contents](README.md) | [Next: The Loop Library >](12-the-loop-library.md)

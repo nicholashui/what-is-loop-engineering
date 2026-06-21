@@ -157,4 +157,4 @@ include git worktrees and separate branches, which let agent work proceed withou
 disturbing the main line of development.
 
 ---
-[< Previous: Synthesis & Conclusion](11-synthesis-and-conclusion.md) | [Table of Contents](README.md) | [Next: References & Author-Asserted Claims >](references.md)
+[< Previous: Curating, Operating & Scaling a Loop Library](14-operating-a-loop-library.md) | [Table of Contents](README.md) | [Next: References & Author-Asserted Claims >](references.md)
