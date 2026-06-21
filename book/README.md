@@ -56,6 +56,22 @@ chapters come first, followed by practical, build-oriented material.
 11. [Synthesis & Conclusion](11-synthesis-and-conclusion.md) — A concluding
     framing of Loop Engineering as a small, well-designed control system.
 
+### The Loop Library
+
+These applied chapters extend the book from building a single Loop to curating and
+running a whole *library* of them. They draw on the publicly published
+[Forward Future Loop Library](https://signals.forwardfuture.ai/loop-library/) as a
+worked example.
+
+12. [The Loop Library: A Catalog of Real-World Loops](12-the-loop-library.md) — A
+    categorized survey of 45 production loops and the reusable shapes they share.
+13. [Implementing a Loop Library](13-implementing-a-loop-library.md) — A loop entry
+    schema, repository layout, search, and a runner that turns any entry into a
+    running Loop.
+14. [Curating, Operating & Scaling a Loop Library](14-operating-a-loop-library.md) —
+    Contribution workflow, quality bar, versioning, metrics, and governance for a
+    shared library.
+
 ## Supporting Material
 
 - [Glossary](glossary.md) — The single source of truth for the book's
