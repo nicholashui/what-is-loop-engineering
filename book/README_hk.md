@@ -53,6 +53,18 @@
 11. [綜合與結論](11-synthesis-and-conclusion_hk.md) —— 以一個總結性嘅角度，將
     Loop Engineering 定位成一個細小而設計精良嘅控制系統。
 
+### Loop 庫（Loop Library）
+
+呢幾章將本書由「起一個 Loop」延伸到「策展同運行成個 Loop *庫*」。佢哋以公開發佈嘅
+[Forward Future Loop Library](https://signals.forwardfuture.ai/loop-library/) 作為實例。
+
+12. [Loop 庫：真實世界 Loop 嘅總目錄](12-the-loop-library_hk.md) —— 將 45 個生產級
+    Loop 分門別類噉整理出嚟，再睇佢哋共有嘅可重用形態。
+13. [實作一個 Loop 庫](13-implementing-a-loop-library_hk.md) —— 一個 Loop 條目嘅
+    schema、儲存庫結構、搜尋，以及一個把任何條目變成運行中 Loop 嘅 runner。
+14. [策展、營運與擴展一個 Loop 庫](14-operating-a-loop-library_hk.md) —— 一個共享庫
+    嘅貢獻流程、品質標準、版本管理、度量指標同治理。
+
 ## 輔助資料
 
 - [詞彙表](glossary_hk.md) —— 本書術語嘅唯一權威依據。

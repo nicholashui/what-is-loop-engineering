@@ -128,4 +128,4 @@ Condition，可緩減 token 成本失控增長的風險。
 的分支，它們讓代理的工作得以進行而不會干擾主開發線。
 
 ---
-[< 上一章：綜合與結論](11-synthesis-and-conclusion_hk.md) | [目錄](README_hk.md) | [下一章：參考資料與作者主張陳述 >](references_hk.md)
+[< 上一章：策展、營運與擴展一個 Loop 庫](14-operating-a-loop-library_hk.md) | [目錄](README_hk.md) | [下一章：參考資料與作者主張陳述 >](references_hk.md)
