@@ -1,7 +1,7 @@
 # 12. The Loop Library: A Catalog of Real-World Loops
 
 > **In this chapter:** You will move from building a single Loop (Chapter 08) to
-> studying a *library* of them. We survey a public collection of 45 production
+> studying a *library* of them. We survey a public collection of 50 production
 > loops — the [Forward Future Loop Library](https://signals.forwardfuture.ai/loop-library/)
 > — organized by the same five categories the library uses: Engineering,
 > Evaluation, Design, Content, and Operations. For each loop you get its author,
@@ -28,7 +28,7 @@ domain-specific goal and a domain-specific check bolted on.
 
 > **Source and attribution.** Every loop in this chapter is drawn from the
 > publicly published [Forward Future Loop Library](https://signals.forwardfuture.ai/loop-library/)
-> (45 loops, last updated June 20, 2026), where each loop is credited to its
+> (50 loops, last updated June 21, 2026), where each loop is credited to its
 > contributor. The names and authors below are reproduced from that source; the
 > "how it works" summaries are **rephrased in our own words for compliance with
 > licensing restrictions** and to map each loop onto this book's vocabulary. For
@@ -265,6 +265,20 @@ builds, benchmarks, and production telemetry.
   sleep or retry. It reruns that test N times, then the full suite, repeating until
   N consecutive full-suite runs pass.
 
+### The Groundtruth loop — *by Mohamed (@aivibecode)*
+
+- **Purpose:** Audit a project's real architecture, security, and operational
+  assumptions from current evidence rather than framework defaults.
+- **How it works:** This is a read-only audit. The agent discovers the project's
+  actual language, framework, hosting platform, privileged surfaces, scheduled jobs,
+  and deployment configuration from the code itself, then inspects each area —
+  architecture, platform compatibility, security, performance, deployment, jobs,
+  business logic, and code quality — recording *proved*, *no issue*, *weak*, or
+  *N/A* with direct evidence, verifying external limits from current primary sources
+  and calculating numbers rather than estimating. It asks before changing code and
+  finishes with a plain-language overview and an area-to-evidence table; unverified
+  areas are returned as blocked rather than guessed.
+
 ## Evaluation Loops
 
 These loops exist to *judge* — products, prompts, policies, claims, and even other
@@ -376,6 +390,19 @@ rubrics, must-pass checks, and independent reviewers.
   independent reviewer applies the method to a fresh real case; it revises at most
   twice and stops when the method meets the bar without the original artifact — or
   reports it as not generalizable.
+
+### The Strip Miner loop — *by Alex Burkhart (@neuralwhisperer)*
+
+- **Purpose:** Mine authorized coding-agent history for repeatable workflows and
+  validate each one with a fresh replay.
+- **How it works:** Working only on explicitly authorized transcripts — treated as
+  *untrusted* evidence — the agent stitches continuations into root tasks and looks
+  for workflows with at least three high-confidence, independent successes,
+  rejecting any candidate whose failures or hidden rescues match its successes. It
+  extracts only traceable steps, checks, and guards, then replays each candidate
+  fresh *without* the source transcripts. It stops once every authorized source is
+  inventoried and one more representative batch changes nothing, reporting the
+  replayed loops, the rejects, deferred material, and blockers.
 
 ## Design Loops
 
@@ -513,9 +540,46 @@ work.
   customer data, fixes the smallest verified problem, then releases through approved
   stages and monitors production.
 
+### The Living Story loop — *by Buddy Hadry (@buddyhadry)*
+
+- **Purpose:** Turn repository activity, goals, and prior open threads into a
+  verified, recurring narrative for the next agent.
+- **How it works:** On each window, the agent reads the configured repositories,
+  goals, the prior `STORY.md`, and any authorized sources, refreshes each project
+  record, and writes a new `STORY.md` with focus, deadlines, open threads, and
+  evidence-backed recent wins — not a raw commit list. It carries every prior thread
+  forward, proving it finished or marking it stale / needs-review, and never
+  silently drops one. It archives the snapshot and stops when verification passes;
+  if evidence or access is missing, it returns a thinner or explicitly blocked
+  snapshot.
+
+### The Recovery Proof loop — *by Eric Lott*
+
+- **Purpose:** Prove that required systems can actually be restored from documented
+  materials within agreed recovery objectives.
+- **How it works:** For each required recovery scenario, the agent randomly selects
+  an eligible real backup or recovery point and restores it from zero in a
+  disposable, isolated clean-room using only documented materials, verifying
+  integrity, dependencies, representative reads and writes, and the actual RPO and
+  RTO. It repairs one blocker, destroys the environment, and retries fresh, stopping
+  when every scenario reaches its predefined consecutive-success streak or an
+  exception is explicitly accepted — never overwriting production, exposing restored
+  data, or initiating failover without approval.
+
+### The refund follow-up loop — *by Jason (@jxnlco)*
+
+- **Purpose:** Start a refund claim and keep following up until the money actually
+  arrives.
+- **How it works:** The agent gathers the charge, the reason, and useful evidence,
+  starts or continues the claim through an *approved* support channel, and keeps a
+  short case note so each follow-up has context. It follows up whenever a reply,
+  promise, or deadline creates a useful next step — treating a pending status as
+  unfinished rather than done — and stops only when the refund is received or it
+  hits a genuine blocker that needs the user.
+
 ## Reading the Catalog as Patterns
 
-Step back from the 45 individual entries and the same handful of *shapes* appear
+Step back from the 50 individual entries and the same handful of *shapes* appear
 again and again. Recognizing the shape is what lets you reuse a loop you have never
 seen for a problem it was never written for:
 
@@ -532,13 +596,21 @@ seen for a problem it was never written for:
   advocate.)*
 - **Reproduce-from-clean-state.** Start from a pristine environment every attempt,
   fix one obstacle, and retry from scratch — carrying nothing between runs.
-  *(fresh-clone, easy onboarding.)*
+  *(fresh-clone, easy onboarding, Recovery Proof, Strip Miner's fresh replay.)*
 - **Streak / threshold convergence.** Keep iterating until N successes in a row, a
   numeric target, or a coverage figure is reached. *(quality streak, 100% test
-  coverage, sub-50 ms page-load, test stabilizer.)*
+  coverage, sub-50 ms page-load, test stabilizer, Recovery Proof.)*
 - **Plan-before-you-build.** Refuse to start implementation until measurable,
   reviewed planning artifacts exist. *(Goal Forge, prepare-a-new-project, Codex
   completion-contract.)*
+
+A few loops deliberately sit outside these shapes, and that is worth noticing too.
+Some are *read-only audits* that prove and rank but never fix (the Groundtruth
+loop); some are *recurring maintenance narratives* that reconcile open threads over
+time (the Living Story loop); and some are *persistent follow-ups* that keep a
+single case moving through delays until an external outcome lands (the refund
+follow-up loop). What unites even these with the rest is the discipline the shapes
+share: an explicit check and an explicit stopping condition.
 
 Each shape is a reusable template waiting for a goal, an evaluator, and a stopping
 condition. That observation is the bridge to the next chapter: if loops cluster
@@ -550,7 +622,7 @@ is exactly what implementing a loop library means.
 - A **Loop Library** is a curated, reusable collection of loop definitions; this
   chapter surveys one public example — the
   [Forward Future Loop Library](https://signals.forwardfuture.ai/loop-library/) of
-  45 loops — as a pattern catalog. *(Summaries here are rephrased for licensing
+  50 loops — as a pattern catalog. *(Summaries here are rephrased for licensing
   compliance; see the source for copy-ready prompt wording.)*
 - The library sorts loops into five categories: **Engineering** (the largest,
   gated on tests/builds/benchmarks/telemetry), **Evaluation** (gated on rubrics,
@@ -561,7 +633,7 @@ is exactly what implementing a loop library means.
 - However different their domains, every loop is still the book's generate →
   evaluate → feed-back → stop heartbeat with a domain-specific **goal**,
   **evaluator**, and **stopping condition** plugged in.
-- The 45 loops collapse into a few reusable **shapes** —
+- The 50 loops collapse into a few reusable **shapes** —
   audit-rank-fix-reverify, generate-score-improve-the-weakest,
   build-then-independently-review, reproduce-from-clean-state, streak/threshold
   convergence, and plan-before-you-build — and recognizing the shape is what makes a
