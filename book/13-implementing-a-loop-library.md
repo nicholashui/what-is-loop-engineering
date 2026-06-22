@@ -6,7 +6,7 @@
 > is described the same way, lay out a repository structure to store them, show how
 > to make the library searchable, and — most importantly — show how to turn a
 > static library entry into a *running* Loop using the machinery from Chapter 08.
-> By the end you will be able to take the 45 patterns from Chapter 12 (or your own)
+> By the end you will be able to take the 50 patterns from Chapter 12 (or your own)
 > and turn them into an executable library.
 
 ## From a Catalog to a Library
@@ -388,7 +388,7 @@ up front in Chapter 08. Grow it the same subtractive way:
 
 The discipline is the same as everywhere in this book: **add a loop to the library
 when *not* having it there causes real duplication — and not before.** A library of
-three loops your team actually runs is worth more than forty-five you copied and
+three loops your team actually runs is worth more than fifty you copied and
 never executed.
 
 ## Key Takeaways

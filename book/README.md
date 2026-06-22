@@ -64,7 +64,7 @@ running a whole *library* of them. They draw on the publicly published
 worked example.
 
 12. [The Loop Library: A Catalog of Real-World Loops](12-the-loop-library.md) — A
-    categorized survey of 45 production loops and the reusable shapes they share.
+    categorized survey of 50 production loops and the reusable shapes they share.
 13. [Implementing a Loop Library](13-implementing-a-loop-library.md) — A loop entry
     schema, repository layout, search, and a runner that turns any entry into a
     running Loop.
